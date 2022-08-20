@@ -29,7 +29,7 @@ pipeline {
       steps {
         echo "Starting sonarqube analysis"
         withSonarQubeEnv('Test_Sonar') {
-          bat "${scannerHome}/bin/sonar-scanner"
+          bat "${scannerHome}/bin/sonar-scanner -D"sonar.projectKey=sonar-shivambindal" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.login=sqp_d9a47c845a5d64d77238d9b42c84dee2885246b7""
         }
       }
     }
