@@ -5,6 +5,7 @@ pipeline {
     username='admin';
     appName='app_shivambindal'
   }
+
   tools {
     nodejs 'nodejs'
   }
@@ -29,7 +30,7 @@ pipeline {
       steps {
         echo "Starting sonarqube analysis"
         withSonarQubeEnv('Test_Sonar') {
-          bat '${scannerHome}/bin/sonar-scanne'
+          bat "${scannerHome}/bin/sonar-scanner"
         }
       }
     }
