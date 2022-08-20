@@ -3,7 +3,8 @@ pipeline {
   environment {
     scannerHome = tool 'SonarQubeScanner';
     username='admin';
-    appName='app_shivambindal'
+    appName='app_shivambindal';
+    sonarAppName='sonar-shivambindal';
   }
 
   tools {
@@ -31,7 +32,7 @@ pipeline {
         echo "Starting sonarqube analysis"
         withSonarQubeEnv('Test_Sonar') {
           bat "${scannerHome}/bin/sonar-scanner \
-           -Dsonar.projectKey=${appName}"
+           -Dsonar.projectKey=${sonarAppName}"
         }
       }
     }
