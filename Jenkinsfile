@@ -30,7 +30,7 @@ pipeline {
       steps {
         echo "Starting sonarqube analysis"
         withSonarQubeEnv('Test_Sonar') {
-          bat "${scannerHome}/bin/sonar-scanner -X"
+         bat "${scannerHome}/bin/sonar-scanner \ -Dsonar.projectKey=sonar-shivambindal -X"
         }
       }
     }
