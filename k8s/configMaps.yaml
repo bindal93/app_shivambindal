@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-configmap-app-shivambindal
+  namespace: kubernetes-cluster-shivambindal
+  labels:
+    app: node-app-shivambindal
+data:
+  API_URL: "http://google.com"
+  ENVIRONMENT: "Dev"
+  LANGUAGE: "English"

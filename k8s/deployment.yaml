@@ -20,8 +20,13 @@ spec:
           image: nagpshivam/i-shivambindal-master:latest
           ports:
             - name: http
-              containerPort: 7300
+              containerPort: 7100
               protocol: TCP
+          envFrom:
+          - configMapRef:
+              name: node-configmap-app-shivambindal
+          - secretRef:
+              name: node-secret-app-shivambindal
 ---
 apiVersion: v1
 kind: Service
@@ -33,7 +38,7 @@ spec:
   selector:
     app: node-app-shivambindal
   ports:
-  - targetport: 80
-    port: 80
+  - targetPort: 7100
+    port: 81
     protocol: TCP
     nodePort: 30081

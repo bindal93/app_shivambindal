@@ -30,14 +30,14 @@ pipeline {
       steps {
         echo "Starting sonarqube analysis"
         withSonarQubeEnv('Test_Sonar') {
-          bat "${scannerHome}/bin/sonar-scanner \
-           -Dsonar.projectKey=${sonarAppName}"
+          bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${sonarAppName}"
         }
       }
-      stage('Kubernetes Deployment') {
-        steps {
-          bat 'kubectl apply -f k8s/deployment.yaml'
-        }
+    }
+    stage('Kubernetes Deployment') {
+      steps {
+        bat 'whoami'
+        //bat 'kubectl --kubeconfig=C:/Users/shivambindal/.kube/config apply -f k8s/deployment.yaml'
       }
     }
   }
