@@ -4,19 +4,19 @@ metadata:
   name: node-app-shivambindal-master-deployment
   namespace: kubernetes-cluster-shivambindal
   labels:
-    app: node-app-shivambindal
+    app: node-shivambindal-master
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: node-app-shivambindal
+      app: node-shivambindal-master
   template:
     metadata:
       labels:
-        app: node-app-shivambindal
+        app: node-shivambindal-master
     spec:
       containers:
-        - name: node-app-shivambindal
+        - name: node-shivambindal-master
           image: nagpshivam/i-shivambindal-master:latest
           ports:
             - name: http
@@ -31,12 +31,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: node-app-shivambindal-master
+  name: node-shivambindal-master
   namespace: kubernetes-cluster-shivambindal
 spec:
   type: LoadBalancer
   selector:
-    app: node-app-shivambindal
+    app: node-shivambindal-master
   ports:
   - targetPort: 7100
     port: 81
