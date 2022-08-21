@@ -34,7 +34,8 @@ pipeline {
            -Dsonar.projectKey=${sonarAppName}"
         }
       }
-      stage('Kubernetes Deployment') {
+    }
+    stage('Kubernetes Deployment') {
         steps {
           bat 'kubectl get all'
         }
