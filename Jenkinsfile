@@ -38,7 +38,8 @@ pipeline {
       steps {
         bat 'whoami'
         bat 'echo %Path%'
-        bat 'kubectl --kubeconfig=C:/Users/shivambindal/.kube/config apply -f k8s/deployment.yaml'
+        //bat 'kubectl --kubeconfig=C:/Users/shivambindal/.kube/config apply -f k8s/deployment.yaml'
+        bat 'kubectl apply -f k8s/deployment.yaml'
       }
     }
   }
