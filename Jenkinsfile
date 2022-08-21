@@ -36,9 +36,8 @@ pipeline {
       }
     }
     stage('Kubernetes Deployment') {
-        steps {
-          bat 'kubectl get all'
-        }
+      steps {
+        bat 'kubectl get all'
       }
     }
   }
