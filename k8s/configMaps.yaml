@@ -4,7 +4,7 @@ metadata:
   name: node-configmap-app-shivambindal
   namespace: kubernetes-cluster-shivambindal
   labels:
-    app: node-app-shivambindal
+    app: node-shivambindal-develop
 data:
   API_URL: "http://google.com"
   ENVIRONMENT: "Dev"
