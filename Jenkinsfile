@@ -15,14 +15,14 @@ pipeline {
         bat 'npm i'
       }
     }
-    stage('Test case execution') {
-      when {
-        branch 'master'
-      }
-      steps {
-        bat 'npm test'
-      }
-    }
+    // stage('Test case execution') {
+    //   when {
+    //     branch 'master'
+    //   }
+    //   steps {
+    //     bat 'npm test'
+    //   }
+    // }
     // stage('Sonarqube Analysis') {
     //   when {
     //     branch 'develop'
