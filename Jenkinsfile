@@ -23,18 +23,18 @@ pipeline {
         bat 'npm test'
       }
     }
-    stage('Sonarqube Analysis') {
-      when {
-        branch 'develop'
-      }
-      steps {
-        echo "Starting sonarqube analysis"
-        withSonarQubeEnv('Test_Sonar') {
-          bat "${scannerHome}/bin/sonar-scanner \
-           -Dsonar.projectKey=${sonarAppName}"
-        }
-      }
-    }
+    // stage('Sonarqube Analysis') {
+    //   when {
+    //     branch 'develop'
+    //   }
+    //   steps {
+    //     echo "Starting sonarqube analysis"
+    //     withSonarQubeEnv('Test_Sonar') {
+    //       bat "${scannerHome}/bin/sonar-scanner \
+    //        -Dsonar.projectKey=${sonarAppName}"
+    //     }
+    //   }
+    // }
     stage('Kubernetes Deployment') {
       steps {
         bat 'kubectl get all'
