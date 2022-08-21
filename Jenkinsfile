@@ -23,21 +23,22 @@ pipeline {
         bat 'npm test'
       }
     }
-    stage('Sonarqube Analysis') {
-      when {
-        branch 'develop'
-      }
-      steps {
-        echo "Starting sonarqube analysis"
-        withSonarQubeEnv('Test_Sonar') {
-          bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${sonarAppName}"
-        }
-      }
-    }
+    // stage('Sonarqube Analysis') {
+    //   when {
+    //     branch 'develop'
+    //   }
+    //   steps {
+    //     echo "Starting sonarqube analysis"
+    //     withSonarQubeEnv('Test_Sonar') {
+    //       bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${sonarAppName}"
+    //     }
+    //   }
+    // }
     stage('Kubernetes Deployment') {
       steps {
         bat 'whoami'
-        //bat 'kubectl --kubeconfig=C:/Users/shivambindal/.kube/config apply -f k8s/deployment.yaml'
+        bat 'echo %Path%'
+        bat 'kubectl --kubeconfig=C:/Users/shivambindal/.kube/config apply -f k8s/deployment.yaml'
       }
     }
   }
