@@ -1,3 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-app-shivambindal
+  namespace: kubernetes-cluster-shivambindal
+  labels:
+    app: node-app-shivambindal
+data:
+  API_URL: "http://google.com"
+  ENVIRONMENT: "Dev"
+  LANGUAGE: "English"
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -22,6 +34,9 @@ spec:
             - name: http
               containerPort: 7200
               protocol: TCP
+          # envFrom:
+          #   - configMapRef:
+          #       name: node-app-shivambindal
 ---
 apiVersion: v1
 kind: Service
@@ -33,7 +48,7 @@ spec:
   selector:
     app: node-app-shivambindal
   ports:
-  - targetport: 80
+  - targetPort: 7200
     port: 80
     protocol: TCP
     nodePort: 30080
