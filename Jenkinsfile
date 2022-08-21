@@ -37,7 +37,8 @@ pipeline {
     // }
     stage('Kubernetes Deployment') {
       steps {
-        bat 'kubectl get all'
+        //bat 'kubectl --kubeconfig=C:/Users/shivambindal/.kube/config apply -f k8s/deployment.yaml'
+        bat 'kubectl --kubeconfig=C:/Users/shivambindal/.kube/config apply -f k8s/deployment.yaml'
       }
     }
   }
