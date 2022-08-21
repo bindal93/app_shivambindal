@@ -36,7 +36,7 @@ pipeline {
       }
       stage('Kubernetes Deployment') {
         steps {
-          bat 'kubectl apply -f k8s/deployment.yaml'
+          bat 'kubectl get all'
         }
       }
     }
