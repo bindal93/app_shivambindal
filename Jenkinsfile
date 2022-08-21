@@ -34,6 +34,11 @@ pipeline {
            -Dsonar.projectKey=${sonarAppName}"
         }
       }
+      stage('Kubernetes Deployment') {
+        steps {
+          bat 'kubectl apply -f k8s/deployment.yaml'
+        }
+      }
     }
   }
 }

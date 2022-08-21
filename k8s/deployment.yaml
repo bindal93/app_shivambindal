@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-shivambindal-develop-deployment
+  namespace: kubernetes-cluster-shivambindal
+  labels:
+    app: node-app-shivambindal
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: node-app-shivambindal
+  template:
+    metadata:
+      labels:
+        app: node-app-shivambindal
+    spec:
+      containers:
+        - name: node-app-shivambindal
+          image: nagpshivam/i-shivambindal-develop:latest
+          ports:
+            - name: http
+              containerPort: 7200
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-app-shivambindal
+  namespace: kubernetes-cluster-shivambindal
+spec:
+  type: LoadBalancer
+  selector:
+    app: node-app-shivambindal
+  ports:
+  - targetport: 80
+    port: 80
+    protocol: TCP
+    nodePort: 30080
