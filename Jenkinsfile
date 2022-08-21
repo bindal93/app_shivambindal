@@ -1,12 +1,11 @@
 pipeline {
   agent any
   environment {
-    scannerHome = tool 'SonarQubeScanner';
-    username='admin';
-    appName='app_shivambindal';
-    sonarAppName='sonar-shivambindal';
+    scannerHome = tool 'SonarQubeScanner'
+    username='admin'
+    appName='app_shivambindal'
+    sonarAppName='sonar-shivambindal'
   }
-
   tools {
     nodejs 'nodejs'
   }
