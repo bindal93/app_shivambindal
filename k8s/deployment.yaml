@@ -7,7 +7,7 @@ metadata:
     app: node-shivambindal-master
 data:
   API_URL: "http://google.com"
-  ENVIRONMENT: "Master"
+  ENVIRONMENT: "master"
 
 ---
 apiVersion: v1

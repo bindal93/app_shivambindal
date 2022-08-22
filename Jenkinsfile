@@ -5,6 +5,9 @@ pipeline {
     username='admin'
     appName='app_shivambindal'
     sonarAppName='sonar-shivambindal'
+    clusterName='nagp-app-shivambindal'
+    gcloudProject='nagp-shivam'
+    zone='us-central1-c'
   }
   tools {
     nodejs 'nodejs'
@@ -36,10 +39,8 @@ pipeline {
     }
     stage('Kubernetes Deployment') {
       steps {
-        bat 'whoami'
-        bat 'echo %Path%'
         bat 'gcloud auth login'
-        bat 'gcloud container clusters get-credentials nagp-app-shivambindal --zone us-central1-c --project nagp-shivam'
+        bat "gcloud container clusters get-credentials ${clusterName} --zone ${zone} --project ${gcloudProject}"
         bat 'kubectl apply -f k8s/deployment.yaml'
       }
     }
