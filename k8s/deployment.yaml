@@ -1,3 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-configmap-app-shivambindal
+  namespace: kubernetes-cluster-shivambindal
+  labels:
+    app: node-shivambindal-develop
+data:
+  API_URL: "http://google.com"
+  ENVIRONMENT: "Dev"
+  LANGUAGE: "English"
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: node-secret-app-shivambindal
+  namespace: kubernetes-cluster-shivambindal
+  labels:
+    app: node-shivambindal-develop
+data:
+  DB_PASSWORD: "YWRtaW4="
+  DB_USERNAME: "YWRtaW4="
+type: Opaque
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -27,7 +55,9 @@ spec:
               name: node-configmap-app-shivambindal
           - secretRef:
               name: node-secret-app-shivambindal
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
