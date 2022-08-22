@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: node-configmap-app-shivambindal
+  name: node-configmap-develop-shivambindal
   namespace: kubernetes-cluster-shivambindal
   labels:
     app: node-shivambindal-develop
@@ -14,7 +14,7 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: node-secret-app-shivambindal
+  name: node-secret-develop-shivambindal
   namespace: kubernetes-cluster-shivambindal
   labels:
     app: node-shivambindal-develop
@@ -51,9 +51,9 @@ spec:
               protocol: TCP
           envFrom:
           - configMapRef:
-              name: node-configmap-app-shivambindal
+              name: node-configmap-develop-shivambindal
           - secretRef:
-              name: node-secret-app-shivambindal
+              name: node-secret-develop-shivambindal
 
 ---
 
@@ -68,6 +68,6 @@ spec:
     app: node-shivambindal-develop
   ports:
   - targetPort: 7100
-    port: 80
+    port: 82
     protocol: TCP
-    nodePort: 30080
+    nodePort: 30082
