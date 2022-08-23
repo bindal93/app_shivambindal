@@ -39,8 +39,8 @@ pipeline {
     }
     stage('Kubernetes Deployment') {
       steps {
-        bat 'gcloud auth login'
-        bat "gcloud container clusters get-credentials ${clusterName} --zone ${zone} --project ${gcloudProject}"
+        // bat 'gcloud auth login'
+        // bat "gcloud container clusters get-credentials ${clusterName} --zone ${zone} --project ${gcloudProject}"
         bat 'kubectl apply -f k8s/deployment.yaml'
       }
     }
